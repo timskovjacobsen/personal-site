@@ -2,9 +2,4 @@
 # Build directory
 public
 
-resources/_gen
-
 exampleSite
-
-hugo.exe
-hugo.linux
