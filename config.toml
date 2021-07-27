@@ -29,12 +29,12 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   filename = "sitemap.xml"
 
 [[menu.main]]             # config your menu              # 配置目录
-  name = "Recent"
+  name = "Blog"
   weight = 10
   identifier = "home"
   url = "/"
 [[menu.main]]
-  name = "Blog"
+  name = "Archive"
   weight = 20
   identifier = "archives"
   url = "/post/"
@@ -64,7 +64,8 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   gitRepo = ""
 
   # site info (optional)
-  logoTitle = "Tim Skov Jacobsen"        # default: the title value
+  logoTitle = "Tim Skov Jacobsen"    # default: the title value
+  profilePicture = "profilePicture.jpg"
   keywords = ["Hugo", "theme","even"]
   description = "Personal website for Tim Skov Jacobsen."
 
@@ -72,13 +73,13 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   archivePaginate = 50
 
   # show 'xx Posts In Total' in archive page ?
-  showArchiveCount = false
+  showArchiveCount = true
 
   # The date format to use; for a list of valid formats, see https://gohugo.io/functions/format/
   dateFormatToUse = "2006-01-02"
 
   # show word count and read time ?
-  moreMeta = false
+  moreMeta = true
 
   # Syntax highlighting by highlight.js
   highlightInClient = false
