@@ -13,8 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          # Include the theme in the submodule as well
-          submodules: true
+          submodules: true # Include the theme from inside the submodule as well
           fetch-depth: 0
 
       - name: Setup Hugo
@@ -22,12 +21,12 @@ jobs:
         with:
           hugo-version: "latest"
 
-      - name: build
+      - name: Build Hugo Site
         run: hugo --minify
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == "refs/heads/main"
         with:
           # NOTE: Github token is created automatically by the action runner
           github_token: ${{ secrets.GITHUB_TOKEN }}
