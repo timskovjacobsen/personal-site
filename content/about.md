@@ -6,7 +6,7 @@ menu: "main"
 ---
 
 <div class="about-intro">
-  <img src="/img/profilePicture.jpg" alt="profile picture">
+  <img id="profile-picture" src="/img/profilePicture.jpg" alt="profile picture">
 
   <h1 id="name">Tim Skov Jacobsen</h1>
   <h4 id="subtitle">Developer, Engineer, Problem Solver</h4>
