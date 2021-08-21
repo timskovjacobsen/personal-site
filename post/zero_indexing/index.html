@@ -1,0 +1,276 @@
+<!doctype html><html lang=en>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Why indexing starts at 0 - Tim Skov Jacobsen</title>
+<meta name=renderer content="webkit">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta http-equiv=cache-control content="no-transform">
+<meta http-equiv=cache-control content="no-siteapp">
+<meta name=theme-color content="#f8f5ec">
+<meta name=msapplication-navbutton-color content="#f8f5ec">
+<meta name=apple-mobile-web-app-capable content="yes">
+<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
+<meta name=author content="Tim Skov Jacobsen"><meta name=description content="My first programming experience was in Matlab. A high-level language built for technical computing. In Matlab, indexing start at 1, which I at the time never thought twice about.
+I have been teaching Python to engineers with non-software background internally at work for some time, and I often get the question
+ Why does indexing start at $0$ instead of $1$?
+ People quickly get used to indexing starting at $0$ though."><meta name=keywords content="Hugo,theme,even">
+<meta name=generator content="Hugo 0.87.0 with theme even">
+<link rel=canonical href=http://localhost:1313/post/zero_indexing/>
+<link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
+<link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png>
+<link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png>
+<link rel=manifest href=/manifest.json>
+<link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5>
+<link href=/sass/main.min.b5a744db6de49a86cadafb3b70f555ab443f83c307a483402259e94726b045ff.css rel=stylesheet>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin=anonymous>
+<link rel=stylesheet href=/css/custom.css>
+<meta property="og:title" content="Why indexing starts at 0">
+<meta property="og:description" content="My first programming experience was in Matlab. A high-level language built for technical computing. In Matlab, indexing start at 1, which I at the time never thought twice about.
+I have been teaching Python to engineers with non-software background internally at work for some time, and I often get the question
+ Why does indexing start at $0$ instead of $1$?
+ People quickly get used to indexing starting at $0$ though.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://localhost:1313/post/zero_indexing/"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-05-24T10:56:59+02:00">
+<meta property="article:modified_time" content="2021-05-24T10:56:59+02:00">
+<meta itemprop=name content="Why indexing starts at 0">
+<meta itemprop=description content="My first programming experience was in Matlab. A high-level language built for technical computing. In Matlab, indexing start at 1, which I at the time never thought twice about.
+I have been teaching Python to engineers with non-software background internally at work for some time, and I often get the question
+ Why does indexing start at $0$ instead of $1$?
+ People quickly get used to indexing starting at $0$ though."><meta itemprop=datePublished content="2021-05-24T10:56:59+02:00">
+<meta itemprop=dateModified content="2021-05-24T10:56:59+02:00">
+<meta itemprop=wordCount content="566">
+<meta itemprop=keywords content="arrays,c,programming,pointers,"><meta name=twitter:card content="summary">
+<meta name=twitter:title content="Why indexing starts at 0">
+<meta name=twitter:description content="My first programming experience was in Matlab. A high-level language built for technical computing. In Matlab, indexing start at 1, which I at the time never thought twice about.
+I have been teaching Python to engineers with non-software background internally at work for some time, and I often get the question
+ Why does indexing start at $0$ instead of $1$?
+ People quickly get used to indexing starting at $0$ though."><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
+</head>
+<body>
+<div id=mobile-navbar class=mobile-navbar>
+<div class=mobile-header-logo>
+<a href=/ class=logo>Tim Skov Jacobsen</a>
+</div>
+<div class=mobile-navbar-icon>
+<span></span>
+<span></span>
+<span></span>
+</div>
+</div>
+<nav id=mobile-menu class="mobile-menu slideout-menu">
+<ul class=mobile-menu-list>
+<a href=/>
+<li class=mobile-menu-item>Blog</li>
+</a><a href=/post/>
+<li class=mobile-menu-item>Archive</li>
+</a><a href=/tags/>
+<li class=mobile-menu-item>Tags</li>
+</a><a href=/categories/>
+<li class=mobile-menu-item>Categories</li>
+</a><a href=/about/>
+<li class=mobile-menu-item>About</li>
+</a><a href=/about/>
+<li class=mobile-menu-item></li>
+</a>
+</ul>
+</nav>
+<div class=container id=mobile-panel>
+<header id=header class=header>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel=stylesheet>
+<div class=logo-wrapper>
+<a href=/ class=logo>Tim Skov Jacobsen</a>
+</div>
+<nav class=site-navbar>
+<ul id=menu class=menu>
+<li class=menu-item>
+<a class=menu-item-link href=/>Blog</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/post/>Archive</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/tags/>Tags</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/categories/>Categories</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/about/>About</a>
+</li><li class=menu-item>
+<a class=menu-item-link href=/about/></a>
+</li>
+</ul>
+</nav>
+</header>
+<main id=main class=main>
+<div class=content-wrapper>
+<div id=content class=content>
+<article class=post>
+<header class=post-header>
+<h1 class=post-title>Why indexing starts at 0</h1>
+<div class=post-meta>
+<span class=post-time> 2021-05-24 </span>
+<div class=post-category>
+<a href=/categories/programming/> programming </a>
+<a href=/categories/c/> c </a>
+</div>
+<span class=more-meta> 566 words </span>
+<span class=more-meta> 3 mins read </span>
+</div>
+</header>
+<div class=post-toc id=post-toc>
+<h2 class=post-toc-title>Contents</h2>
+<div class="post-toc-content always-active">
+<nav id=TableOfContents>
+<ul>
+<li>
+<ul>
+<li><a href=#the-c-language>The C language</a></li>
+<li><a href=#index-0-is-the-array-itself>Index 0 is the array itself</a></li>
+<li><a href=#in-summary>In summary</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+<div class=post-content>
+<p>My first programming experience was in <a href=https://www.mathworks.com/products/matlab.html>Matlab</a>. A high-level language built for technical computing. In Matlab, indexing start at 1, which I at the time never thought twice about.</p>
+<p>I have been teaching Python to engineers with non-software background internally at work for some time, and I often get the question</p>
+<blockquote>
+<p>Why does indexing start at $0$ instead of $1$?</p>
+</blockquote>
+<p>People quickly get used to indexing starting at $0$ though. After all, it&rsquo;s a pretty easy adjustment to the coding habits. But why <em>do</em> arrays start at $0$ in some languages?</p>
+<p>For this explanation, we will take a brief look at the C programming language.</p>
+<h2 id=the-c-language>The C language</h2>
+<p>C is one of the oldest programming languages still used today. It&rsquo;s a low-level language where you write code closer to the computer&rsquo;s hardware compared to higher-level languages like Java and Python.</p>
+<p>Since C operates closer to hardware, many things are left to the programmer to deal with such as memory allocation, correctly passing arguments to functions etc. Most other languages are built on top of C, providing easier ways to deal with those somewhat tedious tasks and lowering the bar for entry into programming.</p>
+<p>In C, the concept of <strong>pointers</strong> is extremely important. We don&rsquo;t need to understand much of it for this post, but in short</p>
+<blockquote>
+<p>A pointer is a variable whose value is the memory address of another variable.</p>
+</blockquote>
+<p>Pointers are used to manipulate variables and arrays at a lower level. To avoid having copies of variables flying around in our C code, we instead pass around information saying &ldquo;you can find the value at this location&rdquo;.</p>
+<p>Let&rsquo;s take a further look at this in relation to <strong>arrays</strong> where indexing comes into play.</p>
+<h2 id=index-0-is-the-array-itself>Index 0 is the array itself</h2>
+<p>Suppose we have an array of integers</p>
+<div class=highlight><div class=chroma>
+<table class=lntable><tr><td class=lntd>
+<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td>
+<td class=lntd>
+<pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=kt>int</span> <span class=n>arr</span><span class=p>[]</span> <span class=o>=</span> <span class=p>{</span><span class=mi>123</span><span class=p>,</span> <span class=mi>221</span><span class=p>,</span> <span class=mi>173</span><span class=p>};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>We just established above that a pointer&rsquo;s value is a memory address. So how to point to an array consisting of multiple integers, which each must have their own address in memory?</p>
+<div class="admonition success">
+<p>Pointing to an array in C points to the first element in the array</p>
+</div>
+<p>So the array pointer is pointing to the first element, but that does not really justify why index $0$ should be the first index.
+This makes more sense when we try to <em>offset</em> to get elements further down the array.</p>
+<p>We can think of it this way:</p>
+<center>
+<table>
+<thead>
+<tr>
+<th style=text-align:center>Element</th>
+<th style=text-align:center>Offset from first element</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:center>$1$</td>
+<td style=text-align:center>$0$</td>
+</tr>
+<tr>
+<td style=text-align:center>$2$</td>
+<td style=text-align:center>$1$</td>
+</tr>
+<tr>
+<td style=text-align:center>$i$</td>
+<td style=text-align:center>$i-1$</td>
+</tr>
+</tbody>
+</table>
+</center>
+<p>Or as a formula</p>
+<p>$$
+\text{value at index} = *( \overbrace{\text{array pointer}}^{\text{1st element of array} } + \overbrace{\text{index}}^{\text{offset}} )
+$$</p>
+<p>The $*$ before the parenthesis denotes that we want the <em>value</em> stored at the memory location, not the memory location itself. The memory location would be a hex number.</p>
+<p>When we view an index in this fashion, namely as an offset from the first element&rsquo;s memory location, it makes sense to use $0$-indexing.</p>
+<div class="admonition question"><p class=admonition-title>What about indexing strings?</p>
+<p>Strings are just arrays of characters under the hood, so it works in the same way.</p>
+</div>
+<h2 id=in-summary>In summary</h2>
+<p>The $0$-indexing in most languages stems from array pointers in C pointing to the first element in the array. The index is viewed as an offset from the first element. Thus, index $0$ is the first element.</p>
+<p>Some scientific programming languages like Matlab and Fortran choose to use $1$-indexing instead to make it more intuitive for people who don&rsquo;t have computer science background.</p>
+</div>
+<div class=post-copyright>
+<p class=copyright-item>
+<span class=item-title>Author</span>
+<span class=item-content>Tim Skov Jacobsen</span>
+</p>
+<p class=copyright-item>
+<span class=item-title>LastMod</span>
+<span class=item-content>
+2021-05-24
+</span>
+</p>
+</div>
+<footer class=post-footer>
+<div class=post-tags>
+<a href=/tags/arrays/>arrays</a>
+<a href=/tags/c/>c</a>
+<a href=/tags/programming/>programming</a>
+<a href=/tags/pointers/>pointers</a>
+</div>
+<nav class=post-nav>
+<a class=prev href=/post/convex-hull/>
+<i class="iconfont icon-left"></i>
+<span class="prev-text nav-default">Graham Scan algorithm for convex hulls</span>
+<span class="prev-text nav-mobile">Prev</span>
+</a>
+</nav>
+</footer>
+</article>
+</div>
+</div>
+</main>
+<footer id=footer class=footer>
+<div class=social-links>
+<a href=mailto:timskovjacobsen@gmail.com class="iconfont icon-email" title=email></a>
+<a href=https://stackoverflow.com/users/5993892/tim-skov-jacobsen class="iconfont icon-stack-overflow" title=stack-overflow></a>
+<a href=https://www.linkedin.com/in/tim-skov-jacobsen-14749555/ class="iconfont icon-linkedin" title=linkedin></a>
+<a href=https://github.com/timskovjacobsen class="iconfont icon-github" title=github></a>
+<a href=http://localhost:1313/index.xml type=application/rss+xml class="iconfont icon-rss" title=rss></a>
+</div>
+<div class=copyright>
+<span class=power-by>
+Powered by <a class=hexo-link href=https://gohugo.io>Hugo</a>
+</span>
+<span class=division>|</span>
+<span class=theme-info>
+Theme -
+<a class=theme-link href=https://github.com/olOwOlo/hugo-theme-even>Even</a>
+</span>
+<span class=copyright-year>
+&copy;
+2021<span class=heart><i class="iconfont icon-heart"></i></span><span>Tim Skov Jacobsen</span>
+</span>
+</div>
+</footer>
+<div class=back-to-top id=back-to-top>
+<i class="iconfont icon-up"></i>
+</div>
+</div>
+<script src=https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin=anonymous></script>
+<script type=text/javascript src=/js/main.min.c99b103c33d1539acf3025e1913697534542c4a5aa5af0ccc20475ed2863603b.js></script>
+<script type=text/javascript>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],tags:'ams'}}</script>
+<script async src=https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin=anonymous></script>
+</body>
+</html>
