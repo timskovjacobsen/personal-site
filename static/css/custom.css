@@ -5,7 +5,7 @@ h2, h3, h4, h5, h6 {
     margin-bottom: -10px;
 }
 
-img {
+#profile-picture {
     /* make a square container */
     width: 250px;
     height: 250px;
@@ -43,6 +43,7 @@ img {
     margin-bottom: 0px;
 }
 
+/* Draft sign for posts */
 .draft-sign {
     float: right;
     padding-left: 10px;
@@ -54,4 +55,23 @@ img {
 blockquote {
     margin-top: 10px !important;
     margin-bottom: 10px !important;
+}
+
+/* Style list bullets acc. to theme color */
+::marker {
+    color: #c05b4d;
+    font-weight: 900;
+}
+
+/* Define how numbering of ordered nested lists should be numbered */
+ol {
+    list-style-type: decimal;
+}
+
+ol > li > ol {
+    list-style-type: lower-alpha;
+}
+
+ol > li > ol > li > ol {
+    list-style-type: upper-roman;
 }
