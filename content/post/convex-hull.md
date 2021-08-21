@@ -2,7 +2,6 @@
 title: "Graham Scan algorithm for convex hulls"
 date: 2021-08-10T10:56:59+02:00
 tags: ["convex-hull", "algorithms", "computational-geometry"]
-draft: true
 author: "Tim Skov Jacobsen"
 description: "This is the description"
 ---

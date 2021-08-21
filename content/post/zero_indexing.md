@@ -1,7 +1,6 @@
 ---
 title: "Why indexing starts at 0"
 date: 2021-05-24T10:56:59+02:00
-draft: true
 tags: ["arrays", "c", "programming", "pointers"]
 categories: ["programming", "c"]
 moreData: true
