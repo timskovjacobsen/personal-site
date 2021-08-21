@@ -8,3 +8,6 @@ exampleSite
 
 hugo.exe
 hugo.linux
+
+# VS Code
+.vscode
