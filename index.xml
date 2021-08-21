@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tim Skov Jacobsen</title><link>http://localhost:1313/</link><description>Recent content on Tim Skov Jacobsen</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>http://localhost:1313/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>http://localhost:1313/about/</guid><description>Tim Skov Jacobsen Developer, Engineer, Problem Solver About Hi, I&amp;rsquo;m Tim.
+I like to write about software development and computer science topics.
+This site This site is made with the Hugo static site generation framework.
+The theme is a Fork I made of the Even theme, in which I changed some details to my liking.
+License The content of this site is MIT licenced.</description></item></channel></rss>

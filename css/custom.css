@@ -1,0 +1,77 @@
+
+h2, h3, h4, h5, h6 {
+    font-weight: 600 !important;
+    font-family: "Crimson Text" !important;
+    margin-bottom: -10px;
+}
+
+#profile-picture {
+    /* make a square container */
+    width: 250px;
+    height: 250px;
+
+    /* fill the container, preserving aspect ratio, and cropping to fit */
+    background-size: cover;
+
+    /* center the image vertically and horizontally */
+    background-position: top center;
+
+    /* round the edges to a circle with border radius 1/2 container size */
+    border-radius: 50%;
+
+    border: 1px solid #c05b4d;
+}
+
+.about-intro {
+    text-align: center;
+    border-bottom: 1px solid #c05b4d;
+}
+
+#name {
+    font-family: "Chancery" !important;
+    /* font-weight: 600 !important; */
+    margin-bottom: 5px !important;
+}
+#subtitle {
+    margin-top: 5px !important;
+    font-weight: 600 !important;
+    margin-bottom: 20px;
+}
+
+.post-title-summary {
+    font-size: 28px !important;
+    margin-bottom: 0px;
+}
+
+/* Draft sign for posts */
+.draft-sign {
+    float: right;
+    padding-left: 10px;
+    font-size: 14px;
+    color: rgb(130, 76, 190);
+}
+
+/* Highlighted areas */
+blockquote {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+/* Style list bullets acc. to theme color */
+::marker {
+    color: #c05b4d;
+    font-weight: 900;
+}
+
+/* Define how numbering of ordered nested lists should be numbered */
+ol {
+    list-style-type: decimal;
+}
+
+ol > li > ol {
+    list-style-type: lower-alpha;
+}
+
+ol > li > ol > li > ol {
+    list-style-type: upper-roman;
+}
