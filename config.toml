@@ -6,7 +6,7 @@ preserveTaxonomyNames = true
 enableRobotsTXT = true
 enableEmoji = true
 theme = "even"
-enableGitInfo = false # use git commit log to generate lastmod record
+enableGitInfo = true # use git commit log to generate lastmod record
 
 # Syntax highlighting by Chroma. NOTE: Don't enable `highlightInClient` and `chroma` at the same time!
 pygmentsOptions = "linenos=table"
@@ -61,12 +61,12 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
 
   since = "2021"            # Site creation time
   # use public git repo url to link lastmod git commit, enableGitInfo should be true.
-  gitRepo = ""
+  gitRepo = "https://github.com/timskovjacobsen/personal-site"
 
   # site info (optional)
   logoTitle = "Tim Skov Jacobsen"    # default: the title value
   profilePicture = "profilePicture.jpg"
-  keywords = ["Hugo", "theme","even"]
+  keywords = ["Hugo", "theme","even", "programming", "blog"]
   description = "Personal website for Tim Skov Jacobsen."
 
   # paginate of archives, tags and categories
