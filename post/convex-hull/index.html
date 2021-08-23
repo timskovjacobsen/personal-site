@@ -11,7 +11,7 @@
 <meta name=msapplication-navbutton-color content="#f8f5ec">
 <meta name=apple-mobile-web-app-capable content="yes">
 <meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
-<meta name=author content="Tim Skov Jacobsen"><meta name=description content="This is the description"><meta name=keywords content="Hugo,theme,even">
+<meta name=author content="Tim Skov Jacobsen"><meta name=description content="This is the description"><meta name=keywords content="Hugo,theme,even,programming,blog">
 <meta name=generator content="Hugo 0.87.0 with theme even">
 <link rel=canonical href=http://localhost:1313/post/convex-hull/>
 <link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png>
@@ -27,11 +27,11 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="http://localhost:1313/post/convex-hull/"><meta property="article:section" content="post">
 <meta property="article:published_time" content="2021-08-10T10:56:59+02:00">
-<meta property="article:modified_time" content="2021-08-10T10:56:59+02:00">
+<meta property="article:modified_time" content="2021-08-23T22:53:36+02:00">
 <meta itemprop=name content="Graham Scan algorithm for convex hulls">
 <meta itemprop=description content="This is the description"><meta itemprop=datePublished content="2021-08-10T10:56:59+02:00">
-<meta itemprop=dateModified content="2021-08-10T10:56:59+02:00">
-<meta itemprop=wordCount content="2976">
+<meta itemprop=dateModified content="2021-08-23T22:53:36+02:00">
+<meta itemprop=wordCount content="2983">
 <meta itemprop=keywords content="convex-hull,algorithms,computational-geometry,"><meta name=twitter:card content="summary">
 <meta name=twitter:title content="Graham Scan algorithm for convex hulls">
 <meta name=twitter:description content="This is the description"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
@@ -103,8 +103,8 @@
 <h1 class=post-title>Graham Scan algorithm for convex hulls</h1>
 <div class=post-meta>
 <span class=post-time> 2021-08-10 </span>
-<span class=more-meta> 2976 words </span>
-<span class=more-meta> 14 mins read </span>
+<span class=more-meta> 2983 words </span>
+<span class=more-meta> 15 mins read </span>
 </div>
 <div class=post-content>
 </div>
@@ -278,7 +278,7 @@ We add point $6$ to the convex hull.</p>
 </span><span class=lnt>4
 </span></code></pre></td>
 <td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>for</span> <span class=n>point</span> <span class=ow>in</span> <span class=s2>&#34;sorted-points-except-the-anchor-and-the-second-point&#34;</span><span class=p>:</span>
+<pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=k>for</span> <span class=n>point</span> <span class=ow>in</span> <span class=s2>&#34;sorted-points-except-anchor-second-point&#34;</span><span class=p>:</span>
     <span class=k>while</span> <span class=s2>&#34;getting-to-next-point-is-not-a-left-turn&#34;</span><span class=p>:</span>
         <span class=n>convex_hull_stack</span><span class=o>.</span><span class=n>pop</span><span class=p>()</span>
     <span class=n>convex_hull_stack</span><span class=o>.</span><span class=n>push</span><span class=p>(</span><span class=n>point</span><span class=p>)</span>
@@ -469,10 +469,10 @@ Add point $10$.</p>
 <div class="admonition note"><p class=admonition-title>Sorting governs time complexity</p>
 <p>The sorting in Step 2 of the preprocessing part is the critical element for the time complexity of the algorithm, since it is the computationally most expensive thing we are doing. The fastest sorting algorithms run in $O(n \log n )$, which makes Graham Scan an $O(n \log n)$ algorithm.</p>
 </div>
-<p>In the loop, we are only backtracking a small part in each iteration. This can be regarded as constant time, i.e. $O(1)$. Therefore we can say that the loop has $O(n)$ time complexity. Had the backtracking step gone all the way back to the anchor point each time, we would have a time complexity of $O(n²)$.</p>
+<p>In the loop, we are only backtracking a few steps in each iteration. This can be regarded as constant time, i.e. $O(1)$. Therefore we can say that the loop has $O(n)$ time complexity. Had the backtracking step gone all the way back to the anchor point each time, we would have a time complexity of $O(n²)$. Fortunately, the algorithm is smarter than that.</p>
 <p>This brings us to</p>
 <p>$$
-\overbrace{O(n \log n)}^{{sorting}} + \overbrace{O(n)}^{loop} \Longrightarrow O(n \log n)
+O(n \log n) + O(n) \Longrightarrow O(n \log n)
 $$</p>
 <h3 id=detecting-direction-of-turns>Detecting direction of turns</h3>
 <p>As we&rsquo;ve seen, the algorithm relies heavily on determining which way we must turn to get to the next point. If we consider the triangle formed by the two last points added to the current convex hull and the new point, we can compute the determinant to find its area.</p>
@@ -804,7 +804,8 @@ $$</p>
 <p class=copyright-item>
 <span class=item-title>LastMod</span>
 <span class=item-content>
-2021-08-10
+2021-08-23
+<a href=https://github.com/timskovjacobsen/personal-site/commit/03ea3ee2e326d2558baba5fd51ed920e4a6f1566 title="Updates for better mobile rendering">(03ea3ee)</a>
 </span>
 </p>
 </div>
@@ -815,7 +816,7 @@ $$</p>
 <a href=/tags/computational-geometry/>computational-geometry</a>
 </div>
 <nav class=post-nav>
-<a class=next href=/post/zero_indexing/>
+<a class=next href=/post/zero-indexing/>
 <span class="next-text nav-default">Why indexing starts at 0</span>
 <span class="next-text nav-mobile">Next</span>
 <i class="iconfont icon-right"></i>
