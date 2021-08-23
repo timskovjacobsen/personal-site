@@ -156,7 +156,7 @@ On to point $6$. This iteration is where we will see the smart part of the Graha
 Now we have a good grasp of the backtracking step, so we can write some pseudocode in Python-like syntax.
 
 ```python
-for point in "sorted-points-except-the-anchor-and-the-second-point":
+for point in "sorted-points-except-anchor-second-point":
     while "getting-to-next-point-is-not-a-left-turn":
         convex_hull_stack.pop()
     convex_hull_stack.push(point)
@@ -338,12 +338,12 @@ You might be wondering why the time complexity of the algorithm becomes $O(n \lo
 The sorting in Step 2 of the preprocessing part is the critical element for the time complexity of the algorithm, since it is the computationally most expensive thing we are doing. The fastest sorting algorithms run in $O(n \log n )$, which makes Graham Scan an $O(n \log n)$ algorithm.
 {{% /admonition %}}
 
-In the loop, we are only backtracking a small part in each iteration. This can be regarded as constant time, i.e. $O(1)$. Therefore we can say that the loop has $O(n)$ time complexity. Had the backtracking step gone all the way back to the anchor point each time, we would have a time complexity of $O(n²)$.
+In the loop, we are only backtracking a few steps in each iteration. This can be regarded as constant time, i.e. $O(1)$. Therefore we can say that the loop has $O(n)$ time complexity. Had the backtracking step gone all the way back to the anchor point each time, we would have a time complexity of $O(n²)$. Fortunately, the algorithm is smarter than that.
 
 This brings us to
 
 $$
-\overbrace{O(n \log n)}^{{sorting}} + \overbrace{O(n)}^{loop} \Longrightarrow O(n \log n)
+O(n \log n) + O(n) \Longrightarrow O(n \log n)
 $$
 
 ### Detecting direction of turns
