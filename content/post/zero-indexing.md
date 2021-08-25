@@ -60,8 +60,10 @@ We can think of it this way:
 Or as a formula
 
 $$
-\text{value at index} = *( \overbrace{\text{array pointer}}^{\text{1st element of array} } + \overbrace{\text{index}}^{\text{offset}} )
+\text{value at index} = *( \text{array pointer} + \text{index} )
 $$
+
+Where $\text{array pointer}$ is the first element of the array and the $\text{index}$ denotes the offset.
 
 The $\*$ before the parenthesis denotes that we want the *value* stored at the memory location, not the memory location itself. The memory location would be a hex number.
 

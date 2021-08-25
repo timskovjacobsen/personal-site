@@ -11,3 +11,6 @@ hugo.linux
 
 # VS Code
 .vscode
+
+# Micro editor
+log.txt

@@ -156,7 +156,7 @@ On to point $6$. This iteration is where we will see the smart part of the Graha
 Now we have a good grasp of the backtracking step, so we can write some pseudocode in Python-like syntax.
 
 ```python
-for point in "sorted-points-except-anchor-second-point":
+for point in "sorted-points-except-anchor-and-second":
     while "getting-to-next-point-is-not-a-left-turn":
         convex_hull_stack.pop()
     convex_hull_stack.push(point)
