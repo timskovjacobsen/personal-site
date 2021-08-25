@@ -41,7 +41,7 @@ Before we start looping over the points to find the convex hull, we will do some
 
     <center>
 
-    ![angle sorting](/img/convex-hull/angle-sorting.svg)
+    ![angle sorting](/img/convex-hull/angle-sorting.png)
     </center>
 
     where
