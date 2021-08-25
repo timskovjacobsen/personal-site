@@ -1,5 +1,7 @@
 # Personal Site
 
-My personal website made with [Hugo](https://gohugo.io/) framework.
+**[timskovjacobsen.com](https://timskovjacobsen.com)**
 
-The site uses a fork of the [Even](https://themes.gohugo.io/hugo-theme-even/) theme that I have tweaked to my liking by modifying styles, fonts, how certain content is displayed etc.
+My personal website and blog made with [Hugo](https://gohugo.io/) framework.
+
+The site uses a fork of the [Even](https://themes.gohugo.io/hugo-theme-even/) theme that I have tweaked to my liking by modifying styles, fonts, how certain content is displayed, etc.
