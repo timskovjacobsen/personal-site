@@ -75,3 +75,8 @@ ol > li > ol {
 ol > li > ol > li > ol {
     list-style-type: upper-roman;
 }
+
+/* Code without a language specification (made via indention in markdown) */
+pre {
+    border-radius: 5px !important;
+}
