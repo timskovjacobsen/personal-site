@@ -7,31 +7,72 @@ author: "Tim Skov Jacobsen"
 description: "This is the description"
 ---
 
-This is the initial post
+## List comprehensions
 
-```python
-for post in posts:
-    print(post)
-```
+List comprehensions is a Python ... TODO
+
+{{% admonition tip "Run the code" %}}
+All code snippets in this post should be directly runnable in a Python interpreter when copied. Run the code and make small variations to get a better feel for how it behaves.
+{{% /admonition %}}
+
+## The most simple form
 
 When `isinstance(st)` is `True`.
 
+{{< highlight python "linenos=false" >}}
+x = [1, 2, 4, 5, -1, 1, 5, -3]
+# Subtract one from each element
+
+x1 = [elem - 1 for elem in x]
+{{< / highlight >}}
+
 ```python
-# Original list
-X = [1.5, 2.3, 4.4, 5.4, 'n', 1.5, 5.1, 'a']
+x = [1, 2, 4, 5, -1, 1, 5, -3]
+# Subtract one from each element
 
-# Extract non-strings from X to new list
-# - when using only 'if', put 'for' in the beginning
-X_non_str = [el for el in X if not isinstance(el, str)]
-
-# Change all strings in X to 'b', preserve everything else as is
-# - when using 'if' and 'else', put 'for' in the end
-X_str_changed = ['b' if isinstance(el, str) else el for el in X]
+x1 = [elem - 1 for elem in x]
 ```
+
+
+{{< highlight python "linenos=true" >}}
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+result_list = expression1 if condition else expression2 for item in iterable
+{{< / highlight >}}
 
 Note that in the first list comprehension for X_non_str, the order is:
 
-## List comprehension with *if*
+## Variation with conditional if
 
 General syntax
 
@@ -54,7 +95,7 @@ The readability of Python really shows here. A person without coding experience 
 \mathtt{ripe\\_apples} = [ \overbrace{\text{extract_apple}}^{\text{expression that filters} } \ \mathtt{for} \ \overbrace{\text{apple}}^{\text{each apple}} \ \mathtt{in} \ \ \ \text{apple_box} \ \ \ \mathtt{if} \ \ \ \text{apple_is_ripe} \ ]
 $$ -->
 
-## List comprehension with *if/else*
+## Variation with conditional if/else
 
 and in the last list comprehension for X_str_changed, the order is:
 
@@ -85,3 +126,13 @@ result = "Yes" if done >= 0 else "No"
 ### Filtering a list
 
 ### Calling a function on list
+
+## Unpacking
+
+```python
+[(p.x, p.y) for ]
+```
+
+## References
+
+* [PEP 202 - List Comprehensions](https://www.python.org/dev/peps/pep-0202/) The Python Enhancement Proposal (PEP) that lead to list comprehensions being part of the language.
