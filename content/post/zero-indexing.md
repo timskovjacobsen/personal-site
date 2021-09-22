@@ -15,6 +15,7 @@ I have been teaching Python to engineers with non-software background internally
 People quickly get used to indexing starting at $0$ though. After all, it's a pretty easy adjustment to the coding habits. But why *do* arrays start at $0$ in some languages?  
 
 For this explanation, we will take a brief look at the C programming language.
+
 ## The C language
 
 C is one of the oldest programming languages still used today. It's a low-level language where you write code closer to the computer's hardware compared to higher-level languages like Java and Python.
